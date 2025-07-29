@@ -28,4 +28,10 @@ public class TaskController {
     public void deleteTask(@PathVariable String id) {
         repo.deleteById(id);
     }
+
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable String id, @RequestBody Task updatedTask) {
+        updatedTask.setId(id);
+        return repo.save(updatedTask);
+    }
 }
